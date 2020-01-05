@@ -10,7 +10,7 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
-
+import time
 import aria2p
 import asyncio
 import os
@@ -204,7 +204,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                     downloading_dir_name = str(file.name)
                 except:
                     pass
-                #
+                msg = time.sleep(30)
                 msg = f"\nDownloading File: `{downloading_dir_name}`"
                 msg += f"\nSpeed: {file.download_speed_string()} 🔽 / {file.upload_speed_string()} 🔼"
                 msg += f"\nProgress: {file.progress_string()}"
