@@ -27,9 +27,10 @@ async def extract_youtube_dl_formats(url, user_working_dir):
         "-pbowkonko@hi2.in",
         "--no-warnings",
         "--console-title",
-        "--max-sleep-interval=20",
-        "--min-sleep-interval=15",
-        "-o '%(playlist_title)s/%(chapter_number)s - %(chapter)s/%(playlist_index)s-%(title)s.%(ext)s'",
+        "--max-sleep-interval20",
+        "--min-sleep-interval15",
+        "-f'best[height<=720]/worst[height>720]'",
+        "-o'%(playlist_title)s/%(chapter_number)s - %(chapter)s/%(playlist_index)s-%(title)s.%(ext)s'",
         "--youtube-skip-dash-manifest",
         "-j",
         url
