@@ -23,14 +23,14 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 async def extract_youtube_dl_formats(url, user_working_dir):
     command_to_exec = [
         "youtube-dl",
-        "-ubowkonko@hi2.in",
-        "-pbowkonko@hi2.in",
+        #"-ubowkonko@hi2.in",
+        #"-pbowkonko@hi2.in",
         "--no-warnings",
-        "--console-title",
-        "--max-sleep-interval20",
-        "--min-sleep-interval15",
-        "-f'best[height<=720]/worst[height>720]'",
-        "-o'%(playlist_title)s/%(chapter_number)s - %(chapter)s/%(playlist_index)s-%(title)s.%(ext)s'",
+       # "--console-title",
+       # "--max-sleep-interval20",
+       # "--min-sleep-interval15",
+       # "-f'best[height<=720]/worst[height>720]'",
+       # "-o'%(playlist_title)s/%(chapter_number)s - %(chapter)s/%(playlist_index)s-%(title)s.%(ext)s'",
         "--youtube-skip-dash-manifest",
         "-j",
         url
