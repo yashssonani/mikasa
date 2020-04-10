@@ -39,7 +39,7 @@ async def upload_to_tg(
     base_file_name = os.path.basename(local_file_name)
     caption_str = ""
     #caption_str += "<code>"
-    caption_str += "@GTMovise " + base_file_name + local_file_name + from_user + dict_contatining_uploaded_files
+    caption_str += "@GTMovise " + base_file_name # + local_file_name + from_user + dict_contatining_uploaded_files
    
     #caption_str += "</code>"
     # caption_str += "\n\n"
