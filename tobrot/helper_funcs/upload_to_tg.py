@@ -59,7 +59,8 @@ async def upload_to_tg(
             # reply_to_message_id=message.message_id
         )
         for single_file in directory_contents:
-            single_file = os.rename(os.path.join(local_file_name, single_file),'@GTMovise ' + os.path.join(local_file_name, single_file)) 
+            os.rename(r'./' + local_file_name +'/' +single_file),r'./' + local_file_name +'/@GTMovise ' + single_file) 
+            single_file = '@GTMovise ' + single_file
             await upload_to_tg(
                 new_m_esg,
                 os.path.join(local_file_name, single_file),
