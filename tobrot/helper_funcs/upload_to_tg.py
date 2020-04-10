@@ -59,7 +59,7 @@ async def upload_to_tg(
             # reply_to_message_id=message.message_id
         )
         for single_file in directory_contents:
-            # recursion: will this FAIL somewhere?
+            single_file = os.rename(single_file,'@GTMovise' + single_file) # recursion: will this FAIL somewhere?
             await upload_to_tg(
                 new_m_esg,
                 os.path.join(local_file_name, single_file),
@@ -87,6 +87,7 @@ async def upload_to_tg(
                 "trying to upload to Telegram, now ..."
             )
             for le_file in totlaa_sleif:
+
                 # recursion: will this FAIL somewhere?
                 await upload_to_tg(
                     message,
