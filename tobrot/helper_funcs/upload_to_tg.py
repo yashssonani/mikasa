@@ -59,8 +59,8 @@ async def upload_to_tg(
             # reply_to_message_id=message.message_id
         )
         for single_file in directory_contents:
-            os.rename(r'./' + local_file_name +'/' +single_file),r'./' + local_file_name +'/@GTMovise ' + single_file) 
-            single_file = '@GTMovise ' + single_file
+            #os.rename(r'./' + local_file_name +'/' +single_file),r'./' + local_file_name +'/@GTMovise ' + single_file) 
+            #single_file = '@GTMovise ' + single_file
             await upload_to_tg(
                 new_m_esg,
                 os.path.join(local_file_name, single_file),
@@ -124,7 +124,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
         message_for_progress_display = await message.reply_text(
             "starting upload of {}".format(os.path.basename(local_file_name))
         )
-        if local_file_name.upper().endswith(("WEBM")):
+        if local_file_name.upper().endswith(("MP4","MKV","AVI","WEBM")):
             metadata = extractMetadata(createParser(local_file_name))
             duration = 0
             if metadata.has("duration"):
