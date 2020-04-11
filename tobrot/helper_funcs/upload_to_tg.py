@@ -50,7 +50,7 @@ async def upload_to_tg(
     # caption_str += "</a>"
     if os.path.isdir(local_file_name):
         directory_contents = os.listdir(local_file_name)
-        for f in directory_contents
+        for f in directory_contents:
             f_name , f_ext = os.path.splitext(f)
             f_name = '@GTMovise ' + f_name.strip()
             new_name = '{}{}'.format(f_name, f_ext)
