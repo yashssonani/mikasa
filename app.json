@@ -66,6 +66,8 @@
     "url": "https://github.com/amivin/aria2-heroku"
   }, {
     "url": "heroku/python"
+  }, {
+    "url": "heroku/php"
   }],
   "formation": {
     "worker": {
