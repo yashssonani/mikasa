@@ -31,9 +31,12 @@ async def incoming_message_f(client, message):
     """/leech command"""
     i_m_sefg = await message.reply_text("processing", quote=True)
     is_zip = False
+    is_unzip = False
     if len(message.command) > 1:
         if message.command[1] == "archive":
             is_zip = True
+        elif message.command[1] == "unzip":
+            is_unzip = True
     # get link from the incoming message
     dl_url, cf_name = extract_link(message.reply_to_message)
     LOGGER.info(dl_url)
@@ -60,7 +63,8 @@ async def incoming_message_f(client, message):
             dl_url,
             new_download_location,
             i_m_sefg,
-            is_zip
+            is_zip,
+            is_unzip
         )
         if not sagtus:
             # if FAILED, display the error message
