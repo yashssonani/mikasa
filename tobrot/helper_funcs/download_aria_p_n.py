@@ -10,18 +10,18 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
-import time
+
 import aria2p
 import asyncio
 import os
 from tobrot.helper_funcs.upload_to_tg import upload_to_tg
 from tobrot.helper_funcs.create_compressed_archive import create_archive
+from tobrot.helper_funcs.create_compressed_archive import create_unzip
 
 from tobrot import (
     ARIA_TWO_STARTED_PORT,
     MAX_TIME_TO_WAIT_FOR_TORRENTS_TO_START,
     AUTH_CHANNEL,
-    DOWNLOAD_LOCATION,
     EDIT_SLEEP_TIME_OUT
 )
 
@@ -32,7 +32,7 @@ async def aria_start():
     aria2_daemon_start_cmd.append("aria2c")
     # aria2_daemon_start_cmd.append("--allow-overwrite=true")
     aria2_daemon_start_cmd.append("--daemon=true")
-    # aria2_daemon_start_cmd.append(f"--dir={DOWNLOAD_LOCATION}")
+    # aria2_daemon_start_cmd.append(f"--dir={Config.TMP_DOWNLOAD_DIRECTORY}")
     # TODO: this does not work, need to investigate this.
     # but for now, https://t.me/TrollVoiceBot?start=858
     aria2_daemon_start_cmd.append("--enable-rpc")
@@ -69,10 +69,10 @@ async def aria_start():
 
 def add_magnet(aria_instance, magnetic_link, c_file_name):
     options = None
-    # if c_file_name is not None:
-    #     options = {
-    #         "dir": c_file_name
-    #     }
+    if c_file_name is not None:
+        options = {
+            "dir": c_file_name
+        }
     try:
         download = aria_instance.add_magnet(
             magnetic_link,
@@ -86,10 +86,10 @@ def add_magnet(aria_instance, magnetic_link, c_file_name):
 
 def add_url(aria_instance, text_url, c_file_name):
     options = None
-    # if c_file_name is not None:
-    #     options = {
-    #         "dir": c_file_name
-    #     }
+    if c_file_name is not None:
+        options = {
+            "dir": c_file_name
+        }
     uris = [text_url]
     # Add URL Into Queue
     try:
@@ -108,7 +108,8 @@ async def call_apropriate_function(
     incoming_link,
     c_file_name,
     sent_message_to_update_tg_p,
-    is_zip
+    is_zip,
+    is_unzip
 ):
     if incoming_link.startswith("magnet:"):
         sagtus, err_message = add_magnet(aria_instance, incoming_link, c_file_name)
@@ -149,6 +150,13 @@ async def call_apropriate_function(
         check_if_file = await create_archive(to_upload_file)
         if check_if_file is not None:
             to_upload_file = check_if_file
+    if is_unzip:
+        # first check if current free space allows this
+        # ref: https://github.com/out386/aria-telegram-mirror-bot/blob/master/src/download_tools/aria-tools.ts#L194
+        # archive the contents
+        check_if_file = await create_unzip(to_upload_file)
+        if check_if_file is not None:
+            to_upload_file = check_if_file        
     #
     response = {}
     LOGGER.info(response)
@@ -199,12 +207,10 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 # TODO: temporary workaround
                 downloading_dir_name = "N/A"
                 try:
-                    # another derp -_-
-                    # https://t.me/c/1220993104/423318
-                    downloading_dir_name = str(file.name)
+                    downloading_dir_name = str(download.name)
                 except:
                     pass
-                #msg = time.sleep(30)
+                #
                 msg = f"\nDownloading File: `{downloading_dir_name}`"
                 msg += f"\nSpeed: {file.download_speed_string()} 🔽 / {file.upload_speed_string()} 🔼"
                 msg += f"\nProgress: {file.progress_string()}"
@@ -214,9 +220,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 msg += f"\n<code>/cancel {gid}</code>"
                 # LOGGER.info(msg)
                 if msg != previous_message:
-                    #time.sleep(30)
                     await event.edit(msg)
-                    #time.sleep(30)
                     previous_message = msg
             else:
                 msg = file.error_message
