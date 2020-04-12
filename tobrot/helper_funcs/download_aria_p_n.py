@@ -156,7 +156,7 @@ async def call_apropriate_function(
         # ref: https://github.com/out386/aria-telegram-mirror-bot/blob/master/src/download_tools/aria-tools.ts#L194
         # archive the contents
         check_if_file = await create_unzip(to_upload_file)
-        #if check_if_file is not None:
+        if check_if_file is not None:
             to_upload_file = check_if_file
     #
     response = {}
