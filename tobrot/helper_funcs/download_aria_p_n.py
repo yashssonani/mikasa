@@ -108,7 +108,8 @@ async def call_apropriate_function(
     incoming_link,
     c_file_name,
     sent_message_to_update_tg_p,
-    is_zip
+    is_zip,
+    is_unzip
 ):
     if incoming_link.startswith("magnet:"):
         sagtus, err_message = add_magnet(aria_instance, incoming_link, c_file_name)
@@ -143,6 +144,13 @@ async def call_apropriate_function(
     to_upload_file = file.name
     #
     if is_zip:
+        # first check if current free space allows this
+        # ref: https://github.com/out386/aria-telegram-mirror-bot/blob/master/src/download_tools/aria-tools.ts#L194
+        # archive the contents
+        check_if_file = await create_archive(to_upload_file)
+        if check_if_file is not None:
+            to_upload_file = check_if_file
+    if is_unzip:
         # first check if current free space allows this
         # ref: https://github.com/out386/aria-telegram-mirror-bot/blob/master/src/download_tools/aria-tools.ts#L194
         # archive the contents
