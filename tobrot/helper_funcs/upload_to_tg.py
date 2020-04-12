@@ -39,7 +39,7 @@ async def upload_to_tg(
     base_file_name = os.path.basename(local_file_name)
     caption_str = ""
     #caption_str += "<code>"
-    caption_str += "@GTMovise " + base_file_name # + local_file_name + from_user + dict_contatining_uploaded_files
+    caption_str += base_file_name # + local_file_name + from_user + dict_contatining_uploaded_files
    
     #caption_str += "</code>"
     # caption_str += "\n\n"
@@ -251,10 +251,11 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
             # send document
             if base_file_name in local_file_name:
 
-                base_file_name1 = '@GTMovise ' + base_file_name
-                yash = local_file_name.replace(base_file_name, base_file_name1)
+                caption_str1 = '@GTMovise ' + caption_str
+                yash = local_file_name.replace(caption_str, caption_str1)
                 local_file_name = os.rename(local_file_name, yash)
                 local_file_name = yash
+                caption_str = caption_str1
             sent_message = await message.reply_document(
                 document=local_file_name,
                 # quote=True,
