@@ -254,7 +254,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                 # quote=True,
                 thumb=thumb,
                 caption=local_file_name, #caption_str,
-                parse_mode="html",
+                #parse_mode="html",
                 disable_notification=True,
                 reply_to_message_id=message.reply_to_message.message_id,
                 progress=progress_for_pyrogram,
