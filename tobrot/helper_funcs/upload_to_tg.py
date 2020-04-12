@@ -251,6 +251,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
             # send document
             local_file_name1 = '@GTMovise ' + local_file_name
             local_file_name = os.rename(local_file_name, local_file_name1)
+            local_file_name = local_file_name1
             sent_message = await message.reply_document(
                 document=local_file_name,
                 # quote=True,
