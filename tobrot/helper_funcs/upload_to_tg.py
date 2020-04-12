@@ -249,7 +249,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                 thumb = thumb_image_path
             #
             # send document
-            if base_file_name in local_file_name:
+            if caption_str in local_file_name:
 
                 caption_str1 = '@GTMovise ' + caption_str
                 yash = local_file_name.replace(caption_str, caption_str1)
