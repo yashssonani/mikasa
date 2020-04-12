@@ -16,6 +16,7 @@ import asyncio
 import os
 from tobrot.helper_funcs.upload_to_tg import upload_to_tg
 from tobrot.helper_funcs.create_compressed_archive import create_archive
+from tobrot.helper_funcs.create_compressed_archive import create_unzip
 
 from tobrot import (
     ARIA_TWO_STARTED_PORT,
@@ -154,8 +155,8 @@ async def call_apropriate_function(
         # first check if current free space allows this
         # ref: https://github.com/out386/aria-telegram-mirror-bot/blob/master/src/download_tools/aria-tools.ts#L194
         # archive the contents
-        check_if_file = await create_archive(to_upload_file)
-        if check_if_file is not None:
+        check_if_file = await create_unzip(to_upload_file)
+        #if check_if_file is not None:
             to_upload_file = check_if_file
     #
     response = {}
