@@ -82,6 +82,7 @@ async def create_unzip(input_directory):
         
         extract_file = handle.extractall(new_working_directory)
         handle.close
+        """
         process = await asyncio.create_subprocess_exec(
             *extract_file,
             # stdout must a pipe to be accessible as process.stdout
@@ -92,6 +93,8 @@ async def create_unzip(input_directory):
         stdout, stderr = await process.communicate()
         e_response = stderr.decode().strip()
         t_response = stdout.decode().strip()
+        """
+     
         if os.path.exists(new_working_directory):
             try:
                 shutil.rmtree(input_directory)
