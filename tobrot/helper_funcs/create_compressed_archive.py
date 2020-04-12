@@ -79,10 +79,11 @@ async def create_unzip(input_directory):
         """
         target = input_directory
         handle = zipfile.ZipFile(target)
-        handle.extractall(new_working_directory)
+        
+        extract_file = handle.extractall(new_working_directory)
         handle.close
         process = await asyncio.create_subprocess_exec(
-            #*file_genertor_command,
+            *extract_file,
             # stdout must a pipe to be accessible as process.stdout
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
