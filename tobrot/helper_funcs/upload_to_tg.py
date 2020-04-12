@@ -249,15 +249,18 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                 thumb = thumb_image_path
             #
             # send document
-            local_file_name1 = '@GTMovise ' + local_file_name
-            local_file_name = os.rename(local_file_name, local_file_name1)
-            local_file_name = local_file_name1
+            if base_file_name in local_file_name:
+
+                base_file_name1 = '@GTMovise ' + base_file_name
+                yash = local_file_name.replace(base_file_name, base_file_name1)
+                local_file_name = os.rename(local_file_name, yash)
+                local_file_name = yash
             sent_message = await message.reply_document(
                 document=local_file_name,
                 # quote=True,
                 thumb=thumb,
-                caption=local_file_name, #caption_str,
-                #parse_mode="html",
+                caption=caption_str, #caption_str,
+                parse_mode="html",
                 disable_notification=True,
                 reply_to_message_id=message.reply_to_message.message_id,
                 progress=progress_for_pyrogram,
