@@ -21,6 +21,7 @@ from tobrot import (
 
 )
 async def remove_w(yo):
+      return_name = "hello.mkv"
       #uj = "hell" "mojo"
       a = yo #"@GTMovise Orange.is.the.New.Black.S01E04.720p.BrRip.Hin-Eng.x265.HEVC-KatmovieHD.nl [Telly].mkv"
       r_word = REMOVE_WORD
@@ -39,16 +40,9 @@ async def remove_w(yo):
                   c = a.replace(b, "")
                   a=c
       c = a
-"""
-yas = ["  ","   ","    "]
-print(yas)
-for coni in yas:
-      if coni in c:
-            c = c.replace(coni, " ")
-            c=c
-c = print(c)
 
-"""
 
-      #yoki = ' '.join(c.split())
-      return c
+      if c is none
+         c = return_name 
+            #yoki = ' '.join(c.split())
+  return return_name
