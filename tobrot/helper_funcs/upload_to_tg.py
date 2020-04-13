@@ -25,7 +25,8 @@ from tobrot.helper_funcs.copy_similar_file import copy_file
 from tobrot import (
     TG_MAX_FILE_SIZE,
     EDIT_SLEEP_TIME_OUT,
-    DOWNLOAD_LOCATION
+    DOWNLOAD_LOCATION,
+    REMOVE_WORD
 )
 
 
