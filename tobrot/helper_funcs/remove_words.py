@@ -23,14 +23,14 @@ from tobrot import (
 async def remove_w(yo):
       #uj = "hell" "mojo"
       a = yo #"@GTMovise Orange.is.the.New.Black.S01E04.720p.BrRip.Hin-Eng.x265.HEVC-KatmovieHD.nl [Telly].mkv"
-      AUTH_USERS = REMOVE_WORD
+      r_word = REMOVE_WORD
       #print(AUTH_USERS)
-      AUTH_USERS = AUTH_USERS.split()
+      r_word = r_word.split()
       #print(AUTH_USERS)
       #yy = chr(5)
       #print(yy)
       cars = []
-      cars = cars + AUTH_USERS
+      cars = cars + r_word
       #print(cars)
       #TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 
