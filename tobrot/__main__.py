@@ -19,8 +19,8 @@ from tobrot import (
     TG_BOT_TOKEN,
     APP_ID,
     API_HASH,
-    AUTH_CHANNEL,
-    REMOVE_WORD
+    AUTH_CHANNEL
+    
 )
 
 from pyrogram import Client, Filters, MessageHandler, CallbackQueryHandler
