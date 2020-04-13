@@ -43,7 +43,7 @@ async def remove_w(yo):
 
 
       if c is none:
-         return_namr = return_name 
+         return_name = return_name 
       else:
          return_name = c
 
