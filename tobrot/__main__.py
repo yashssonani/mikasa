@@ -19,7 +19,7 @@ from tobrot import (
     TG_BOT_TOKEN,
     APP_ID,
     API_HASH,
-    AUTH_CHANNEL
+    AUTH_CHANNEL,
     REMOVE_WORD
 )
 
