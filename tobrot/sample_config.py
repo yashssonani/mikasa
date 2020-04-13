@@ -9,6 +9,7 @@ class Config(object):
     # Get these values from my.telegram.org
     # to store the channel ID who are authorized to use the bot
     AUTH_CHANNEL = int(os.environ.get("AUTH_CHANNEL", -100))
+    REMOVE_WORD = os.environ.get("REMOVE_WORD", "")
     # the download location, where the HTTP Server runs
     DOWNLOAD_LOCATION = "./DOWNLOADS"
     # Telegram maximum file upload size
