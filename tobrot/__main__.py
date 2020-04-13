@@ -20,6 +20,7 @@ from tobrot import (
     APP_ID,
     API_HASH,
     AUTH_CHANNEL
+    REMOVE_WORD
 )
 
 from pyrogram import Client, Filters, MessageHandler, CallbackQueryHandler
