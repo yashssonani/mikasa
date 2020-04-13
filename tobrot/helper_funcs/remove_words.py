@@ -42,7 +42,10 @@ async def remove_w(yo):
       c = a
 
 
-      if c is none
-         c = return_name 
+      if c is none:
+         return_namr = return_name 
+      else:
+         return_name = c
+
             #yoki = ' '.join(c.split())
   return return_name
