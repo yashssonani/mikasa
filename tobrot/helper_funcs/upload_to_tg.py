@@ -257,7 +257,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                 #yash = await remove_w(yash)
                 local_file_name = os.rename(local_file_name, yash)
                 local_file_name = yash
-                caption_str = REMOVE_WORD #caption_str1
+                caption_str = caption_str1
             sent_message = await message.reply_document(
                 document=local_file_name,
                 # quote=True,
