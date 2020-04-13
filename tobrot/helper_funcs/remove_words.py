@@ -50,5 +50,5 @@ c = print(c)
 
 """
 
-      yoki = ' '.join(c.split())
-      return yoki
+      #yoki = ' '.join(c.split())
+      return c
