@@ -21,12 +21,12 @@ from tobrot.helper_funcs.display_progress import progress_for_pyrogram, humanbyt
 from tobrot.helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 from tobrot.helper_funcs.split_large_files import split_large_files
 from tobrot.helper_funcs.copy_similar_file import copy_file
-from tobrot.helper_funcs.remove_words import remove_w
+#from tobrot.helper_funcs.remove_words import remove_w
 from tobrot import (
     TG_MAX_FILE_SIZE,
     EDIT_SLEEP_TIME_OUT,
-    DOWNLOAD_LOCATION,
-    REMOVE_WORD
+    DOWNLOAD_LOCATION
+    
 )
 
 
@@ -254,7 +254,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
 
                 caption_str1 = '@GTMovise ' + caption_str
                 yash = local_file_name.replace(caption_str, caption_str1)
-                yash = await remove_w(yash)
+                #yash = await remove_w(yash)
                 local_file_name = os.rename(local_file_name, yash)
                 local_file_name = yash
                 caption_str = caption_str1
