@@ -32,3 +32,6 @@ async def multi_links(reply_message):
             progress=progress_for_pyrogram,
             progress_args=("trying to download")
         )
+    with open(after_download_file_name) as kola:
+        for rec in kola:
+            
