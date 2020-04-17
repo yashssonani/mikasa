@@ -12,11 +12,11 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
 
 
-def extract_link(message, is_multi, download_location):
+def extract_link(message, is_multi):
     custom_file_name = None
     url = None
     if is_multi:
-       url = multi_links(message, download_location)
+       url = multi_links(message)
     else:
         if message is None:
            url = None
