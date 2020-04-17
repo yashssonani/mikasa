@@ -26,9 +26,9 @@ async def remove_w(yo):
        b = REMOVE_WORD.split()
        for bya in b:
              if bya in a:
-                 if bya=="_":
-                    ko = a.replace(bya, " ")
-                 else:
+                 #if bya=="_":
+                 #   ko = a.replace(bya, " ")
+                 #else:
                     ko = a.replace(bya, "")
                  a = ko
        a=ko 
