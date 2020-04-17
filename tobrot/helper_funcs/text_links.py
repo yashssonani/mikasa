@@ -23,3 +23,12 @@ from tobrot import (
     DOWNLOAD_LOCATION,
     REMOVE_WORD
 )
+
+
+async def multi_links(reply_message):
+    after_download_file_name = download_media(
+            message=reply_message,
+            file_name=download_location,
+            progress=progress_for_pyrogram,
+            progress_args=("trying to download")
+        )
