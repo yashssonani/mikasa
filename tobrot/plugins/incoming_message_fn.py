@@ -35,8 +35,12 @@ async def incoming_message_f(client, message):
     if len(message.command) > 1:
         if message.command[1] == "archive":
             is_zip = True
+        elif message.command[1] == "multi":
+            is_multi = True 
         elif message.command[1] == "unzip":
             is_unzip = True
+    if is_multi:
+        dl_url = multi_link(message.reply_to_message)
     # get link from the incoming message
     dl_url, cf_name = extract_link(message.reply_to_message)
     LOGGER.info(dl_url)
