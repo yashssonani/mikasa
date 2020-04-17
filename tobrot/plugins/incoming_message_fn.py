@@ -25,6 +25,7 @@ from tobrot.helper_funcs.download_aria_p_n import call_apropriate_function, aria
 from tobrot.helper_funcs.download_from_link import request_download
 from tobrot.helper_funcs.display_progress import progress_for_pyrogram
 from tobrot.helper_funcs.youtube_dl_extractor import extract_youtube_dl_formats
+from tobrot.helper_funcs.text_links import multi_links
 
 
 async def incoming_message_f(client, message):
@@ -40,7 +41,7 @@ async def incoming_message_f(client, message):
         elif message.command[1] == "unzip":
             is_unzip = True
     if is_multi:
-        dl_url = multi_link(message.reply_to_message)
+        dl_url = multi_links(message.reply_to_message)
     # get link from the incoming message
     dl_url, cf_name = extract_link(message.reply_to_message)
     LOGGER.info(dl_url)
