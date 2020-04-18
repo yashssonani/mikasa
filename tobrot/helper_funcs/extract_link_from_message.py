@@ -47,7 +47,7 @@ def extract_links(message):
         url, custom_file_name = message.split("|")
         url = url.strip()
         custom_file_name = custom_file_name.strip()
-    elif message.entities is not None:
+    elif message is not None:
         url = message
     return url, custom_file_name
 
