@@ -20,7 +20,7 @@ from tobrot import (
 
 import pyrogram
 import time
-from tobrot.helper_funcs.extract_link_from_message import extract_link
+from tobrot.helper_funcs.extract_link_from_message import extract_link, extract_links
 from tobrot.helper_funcs.download_aria_p_n import call_apropriate_function, aria_start
 from tobrot.helper_funcs.download_from_link import request_download
 from tobrot.helper_funcs.display_progress import progress_for_pyrogram
@@ -42,11 +42,10 @@ async def incoming_message_f(client, message):
       hell = await message.reply_to_message.download(
         file_name = DOWNLOAD_LOCATION
         )
-      i_m_sefg = await message.reply_text(text=hell, quote=True)
+      #i_m_sefg = await message.reply_text(text=hell, quote=True)
       with open (hell) as foe:
         for rec in foe:
-          dl_url = rec
-          cf_name = None
+          dl_url, cf_name = extract_links(rec)
           is_zip = False
           is_unzip = False
           LOGGER.info(dl_url)
