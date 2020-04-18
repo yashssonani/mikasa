@@ -95,7 +95,7 @@ async def incoming_message_f(client, message):
             str(current_user_id),
             str(time.time())
           )
-          y
+          
         # create download directory, if not exist
           if not os.path.isdir(new_download_location):
               os.makedirs(new_download_location)
