@@ -48,6 +48,6 @@ def extract_links(message):
         url = url.strip()
         custom_file_name = custom_file_name.strip()
     elif message.entities is not None:
-        url = message.text
+        url = message
     return url, custom_file_name
 
