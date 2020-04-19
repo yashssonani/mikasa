@@ -53,7 +53,7 @@ async def incoming_message_f(client, message):
               
       if not os.path.isdir(new_download_location):
           os.makedirs(new_download_location)
-      new_download_location = new_download_location + "/"
+      new_download_location = new_download_location + "/%(title)s.%(ext)s"
       #i_m_sefg = await message.reply_text(text=hell, quote=True)
       with open (hell) as foe:
         for rec in foe:
