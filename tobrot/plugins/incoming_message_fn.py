@@ -69,7 +69,7 @@ async def incoming_message_f(client, message):
                "-o"+new_download_location,
                url
           ]   
-      process = call(command, shell=False)
+          process = call(command, shell=False)
       to_upload_file = new_download_location
       response = {}
       LOGGER.info(response)
