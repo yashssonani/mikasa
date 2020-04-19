@@ -53,7 +53,7 @@ async def incoming_message_f(client, message):
               
       if not os.path.isdir(new_download_location):
           os.makedirs(new_download_location)
-      new_download_location = new_download_location + "/%(title)s.%(ext)s"
+      new_download_location = new_download_location + "/"
       #i_m_sefg = await message.reply_text(text=hell, quote=True)
       with open (hell) as foe:
         for rec in foe:
@@ -66,7 +66,7 @@ async def incoming_message_f(client, message):
                "--console-title",
                #"--min-sleep-interval=10",
                #"--max-sleep-interval=20",
-               "-o"+new_download_location,
+               "-o"+new_download_location+"%(title)s.%(ext)s",
                url
           ]   
           process = call(command, shell=False)
