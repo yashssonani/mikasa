@@ -131,7 +131,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
         message_for_progress_display = await message.reply_text(
             "starting upload of {}".format(os.path.basename(local_file_name))
         )
-        if local_file_name.upper().endswith(("WEBM")):
+        if local_file_name.upper().endswith(("MKV","MP4","WEBM")):
             metadata = extractMetadata(createParser(local_file_name))
             duration = 0
             if metadata.has("duration"):
@@ -173,6 +173,16 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
             thumb = None
             if thumb_image_path is not None and os.path.isfile(thumb_image_path):
                 thumb = thumb_image_path
+            if caption_str in local_file_name:
+
+                caption_str1 = '@GTMovise ' + caption_str
+                caption_str2 = caption_str1
+                #caption_str2 = await remove_w(caption_str2)
+                yash = local_file_name.replace(caption_str, caption_str2)
+                #yash = await remove_w(yash)
+                local_file_name = os.rename(local_file_name, yash)
+                local_file_name = yash
+                caption_str = caption_str2
             # send video
             sent_message = await message.reply_video(
                 video=local_file_name,
@@ -264,7 +274,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                 document=local_file_name,
                 # quote=True,
                 thumb=thumb,
-               # caption=caption_str, #caption_str,
+                caption=caption_str, #caption_str,
                 parse_mode="html",
                 disable_notification=True,
                 reply_to_message_id=message.reply_to_message.message_id,
