@@ -45,6 +45,15 @@ async def incoming_message_f(client, message):
         file_name = DOWNLOAD_LOCATION
         )
       sent_message_to_update_tg_p = i_m_sefg
+      current_user_id = message.from_user.id
+      new_download_location = os.path.join(DOWNLOAD_LOCATION,str(current_user_id),str(time.time()))
+                
+                
+                
+              
+      if not os.path.isdir(new_download_location):
+          os.makedirs(new_download_location)
+      new_download_location = new_download_location + "/"
       #i_m_sefg = await message.reply_text(text=hell, quote=True)
       with open (hell) as foe:
         for rec in foe:
@@ -59,17 +68,9 @@ async def incoming_message_f(client, message):
               #await i_m_sefg.edit_text("extracting links")
               #aria_i_p = await aria_start()
               #LOGGER.info(aria_i_p)
-              await asyncio.sleep(5)
-              current_user_id = message.from_user.id
-              new_download_location = os.path.join(
-                DOWNLOAD_LOCATION,
-                str(current_user_id),
-                str(time.time())
-              )
-              if not os.path.isdir(new_download_location):
-                  os.makedirs(new_download_location)
-              new_download_location = new_download_location + "/"
-              await i_m_sefg.edit_text("trying to download")
+              #await asyncio.sleep(5)
+              
+              #await i_m_sefg.edit_text("trying to download")
               command =[
                   "youtube-dl",
                   "--no-warnings",
@@ -79,17 +80,17 @@ async def incoming_message_f(client, message):
                   "-o"+new_download_location,
                   url
               ]   
-              process = call(command, shell=False)
-              to_upload_file = new_download_location
-              response = {}
-              LOGGER.info(response)
-              user_id = sent_message_to_update_tg_p.reply_to_message.from_user.id
-              final_response = await upload_to_tg(
-                  sent_message_to_update_tg_p,
-                  to_upload_file,
-                  user_id,
-                  response
-              )
+         process = call(command, shell=False)
+         to_upload_file = new_download_location
+         response = {}
+         LOGGER.info(response)
+         user_id = sent_message_to_update_tg_p.reply_to_message.from_user.id
+         final_response = await upload_to_tg(sent_message_to_update_tg_p,to_upload_file,user_id,response)
+                  
+                  
+                  
+                  
+              
     else:
       i_m_sefg = await message.reply_text("is not", quote=True)
       dl_url, cf_name = extract_link(message.reply_to_message)
