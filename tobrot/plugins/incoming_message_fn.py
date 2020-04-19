@@ -71,15 +71,15 @@ async def incoming_message_f(client, message):
               #await asyncio.sleep(5)
               
               #await i_m_sefg.edit_text("trying to download")
-              command =[
-                  "youtube-dl",
-                  "--no-warnings",
-                  "--console-title",
-                  "--min-sleep-interval=10",
-                  "--max-sleep-interval=20",
-                  "-o"+new_download_location,
-                  url
-              ]   
+           command =[
+                "youtube-dl",
+                "--no-warnings",
+                "--console-title",
+                #"--min-sleep-interval=10",
+                #"--max-sleep-interval=20",
+                "-o"+new_download_location,
+                url
+           ]   
          process = call(command, shell=False)
          to_upload_file = new_download_location
          response = {}
