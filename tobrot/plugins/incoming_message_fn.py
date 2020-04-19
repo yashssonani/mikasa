@@ -20,7 +20,7 @@ from tobrot import (
 
 import pyrogram
 import time
-from tobrot.helper_funcs.extract_link_from_message import extract_link, extract_links
+from tobrot.helper_funcs.extract_link_from_message import extract_link
 from tobrot.helper_funcs.download_aria_p_n import call_apropriate_function, aria_start
 from tobrot.helper_funcs.download_from_link import request_download
 from tobrot.helper_funcs.display_progress import progress_for_pyrogram
@@ -42,18 +42,20 @@ async def incoming_message_f(client, message):
       hell = await message.reply_to_message.download(
         file_name = DOWNLOAD_LOCATION
         )
-      #i_m_sefg = await message.reply_text(text=hell, quote=True)
+      i_m_sefg = await message.reply_text(text=hell, quote=True)
       with open (hell) as foe:
         for rec in foe:
-          dl_url, cf_name = extract_links(rec)
-          is_zip = False
-          is_unzip = False
-          LOGGER.info(dl_url)
-          LOGGER.info(cf_name)
-          if dl_url is not None:
+          url = rec
+          sent_message_to_update_tg_p = i_m_sefg
+          #cf_name = None
+          #is_zip = False
+          #is_unzip = False
+          #LOGGER.info(dl_url)
+          #LOGGER.info(cf_name)
+          if url is not None:
               await i_m_sefg.edit_text("extracting links")
-              aria_i_p = await aria_start()
-              LOGGER.info(aria_i_p)
+              #aria_i_p = await aria_start()
+              #LOGGER.info(aria_i_p)
               current_user_id = message.from_user.id
               new_download_location = os.path.join(
                 DOWNLOAD_LOCATION,
@@ -62,20 +64,28 @@ async def incoming_message_f(client, message):
               )
               if not os.path.isdir(new_download_location):
                   os.makedirs(new_download_location)
+              new_download_location = new_download_location + "/"
               await i_m_sefg.edit_text("trying to download")
-              sagtus, err_message = await call_apropriate_function(
-                  aria_i_p,
-                  dl_url,
-                new_download_location,
-                  i_m_sefg,
-                  is_zip,
-                  is_unzip
+              command =[
+                  "youtube-dl",
+                  "--no-warnings",
+                  "--console-title",
+                  "--min-sleep-interval=10",
+                  "--max-sleep-interval=20",
+                  "-o"+new_download_location,
+                  url
+              ]   
+              process = call(command, shell=False)
+              to_upload_file = new_download_location
+              response = {}
+              LOGGER.info(response)
+              user_id = sent_message_to_update_tg_p.reply_to_message.from_user.id
+              final_response = await upload_to_tg(
+                  sent_message_to_update_tg_p,
+                  to_upload_file,
+                  user_id,
+                  response
               )
-              if not sagtus:
-                # if FAILED, display the error message
-                  await i_m_sefg.edit_text(err_message)
-          else:
-              await i_m_sefg.edit_text("**FCUK**! wat have you entered. Please read /help")
     else:
       i_m_sefg = await message.reply_text("is not", quote=True)
       dl_url, cf_name = extract_link(message.reply_to_message)
