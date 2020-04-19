@@ -44,7 +44,7 @@ async def incoming_message_f(client, message):
       hell = await message.reply_to_message.download(
         file_name = DOWNLOAD_LOCATION
         )
-      i_m_sefg = await message.reply_text(text=hell, quote=True)
+      #i_m_sefg = await message.reply_text(text=hell, quote=True)
       with open (hell) as foe:
         for rec in foe:
           url = rec
@@ -55,7 +55,7 @@ async def incoming_message_f(client, message):
           #LOGGER.info(dl_url)
           #LOGGER.info(cf_name)
           if url is not None:
-              await i_m_sefg.edit_text("extracting links")
+              #await i_m_sefg.edit_text("extracting links")
               #aria_i_p = await aria_start()
               #LOGGER.info(aria_i_p)
               current_user_id = message.from_user.id
