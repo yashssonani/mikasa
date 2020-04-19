@@ -268,7 +268,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                 caption_str2 = caption_str1
                 if "%20" in caption_str2:
                    caption_str2 = caption_str2.replace("%20"," ")
-                #caption_str2 = await remove_w(caption_str2)
+                caption_str2 = await remove_w(caption_str2)
                 yash = local_file_name.replace(caption_str, caption_str2)
                 #yash = await remove_w(yash)
                 local_file_name = os.rename(local_file_name, yash)
