@@ -42,7 +42,7 @@ async def incoming_message_f(client, message):
     # get link from the incoming message
     if not message.reply_to_message:
       i_m_sefg = await message.reply_text("No link or No File Found", quote=True)
-    if message.reply_to_message.document:
+    elif message.reply_to_message.document:
       hell = await message.reply_to_message.download(
         file_name = DOWNLOAD_LOCATION
         )
