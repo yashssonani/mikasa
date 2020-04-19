@@ -69,12 +69,12 @@ async def incoming_message_f(client, message):
                "-o"+new_download_location,
                url
           ]   
-        process = call(command, shell=False)
-        to_upload_file = new_download_location
-        response = {}
-        LOGGER.info(response)
-        user_id = sent_message_to_update_tg_p.reply_to_message.from_user.id
-        final_response = await upload_to_tg(sent_message_to_update_tg_p,to_upload_file,user_id,response)
+      process = call(command, shell=False)
+      to_upload_file = new_download_location
+      response = {}
+      LOGGER.info(response)
+      user_id = sent_message_to_update_tg_p.reply_to_message.from_user.id
+      final_response = await upload_to_tg(sent_message_to_update_tg_p,to_upload_file,user_id,response)
                   
                   
                   
