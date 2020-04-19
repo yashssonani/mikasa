@@ -58,7 +58,7 @@ async def incoming_message_f(client, message):
       with open (hell) as foe:
         for rec in foe:
           url = rec
-          
+          LOGGER.info(url)
           
           command =[
                "youtube-dl",
