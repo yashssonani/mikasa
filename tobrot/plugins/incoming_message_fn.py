@@ -59,33 +59,22 @@ async def incoming_message_f(client, message):
         for rec in foe:
           url = rec
           
-          #cf_name = None
-          #is_zip = False
-          #is_unzip = False
-          #LOGGER.info(dl_url)
-          #LOGGER.info(cf_name)
-          #if url is not None:
-              #await i_m_sefg.edit_text("extracting links")
-              #aria_i_p = await aria_start()
-              #LOGGER.info(aria_i_p)
-              #await asyncio.sleep(5)
-              
-              #await i_m_sefg.edit_text("trying to download")
-           command =[
-                "youtube-dl",
-                "--no-warnings",
-                "--console-title",
-                #"--min-sleep-interval=10",
-                #"--max-sleep-interval=20",
-                "-o"+new_download_location,
-                url
-           ]   
-         process = call(command, shell=False)
-         to_upload_file = new_download_location
-         response = {}
-         LOGGER.info(response)
-         user_id = sent_message_to_update_tg_p.reply_to_message.from_user.id
-         final_response = await upload_to_tg(sent_message_to_update_tg_p,to_upload_file,user_id,response)
+          
+          command =[
+               "youtube-dl",
+               "--no-warnings",
+               "--console-title",
+               #"--min-sleep-interval=10",
+               #"--max-sleep-interval=20",
+               "-o"+new_download_location,
+               url
+          ]   
+        process = call(command, shell=False)
+        to_upload_file = new_download_location
+        response = {}
+        LOGGER.info(response)
+        user_id = sent_message_to_update_tg_p.reply_to_message.from_user.id
+        final_response = await upload_to_tg(sent_message_to_update_tg_p,to_upload_file,user_id,response)
                   
                   
                   
