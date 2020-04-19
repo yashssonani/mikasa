@@ -51,7 +51,7 @@ async def incoming_message_f(client, message):
       new_download_location = os.path.join(DOWNLOAD_LOCATION,str(current_user_id),str(time.time()))
                 
                 
-                
+      LOGGER.info(new_download_location)         
               
       if not os.path.isdir(new_download_location):
           os.makedirs(new_download_location)
