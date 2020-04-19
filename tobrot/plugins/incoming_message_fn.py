@@ -17,7 +17,8 @@ import os
 from tobrot import (
     DOWNLOAD_LOCATION
 )
-
+import asyncio
+import subprocess
 import pyrogram
 import time
 from tobrot.helper_funcs.extract_link_from_message import extract_link
@@ -25,7 +26,8 @@ from tobrot.helper_funcs.download_aria_p_n import call_apropriate_function, aria
 from tobrot.helper_funcs.download_from_link import request_download
 from tobrot.helper_funcs.display_progress import progress_for_pyrogram
 from tobrot.helper_funcs.youtube_dl_extractor import extract_youtube_dl_formats
-
+from subprocess import call
+from tobrot.helper_funcs.upload_to_tg import upload_to_tg
 
 async def incoming_message_f(client, message):
     """/leech command"""
