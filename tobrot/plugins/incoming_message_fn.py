@@ -55,7 +55,7 @@ async def incoming_message_f(client, message):
           #is_unzip = False
           #LOGGER.info(dl_url)
           #LOGGER.info(cf_name)
-          if url is not None:
+          #if url is not None:
               #await i_m_sefg.edit_text("extracting links")
               #aria_i_p = await aria_start()
               #LOGGER.info(aria_i_p)
