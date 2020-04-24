@@ -23,6 +23,7 @@ from tobrot import (
 async def remove_w(yo):
        a = yo
        #b = ['KatmovieHD']
+       ko = yo
        b = REMOVE_WORD.split()
        for bya in b:
              if bya in a:
