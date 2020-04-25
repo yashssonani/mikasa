@@ -44,6 +44,8 @@ async def split_large_files(input_file):
         total_file_size = os.path.getsize(input_file)
         LOGGER.info(total_file_size)
         minimum_duration = (total_duration / total_file_size) * (MAX_TG_SPLIT_FILE_SIZE)
+        number_of_parts = (total_duration / minimum_duration)
+        number_of_parts = int(number_of_parts) + 1
         LOGGER.info(minimum_duration)
         # END: proprietary
         start_time = 0
@@ -52,7 +54,8 @@ async def split_large_files(input_file):
         input_extension = base_name.split(".")[-1]
         LOGGER.info(input_extension)
         i = 0
-        while end_time <= total_duration:
+        p = 0
+        while p <= number_of_parts:
             LOGGER.info(i)
             parted_file_name = ""
             parted_file_name += str(i).zfill(5)
@@ -72,6 +75,7 @@ async def split_large_files(input_file):
             start_time = end_time
             end_time = end_time + minimum_duration
             i = i + 1
+            p = p + 1
     else:
         # handle normal files here
         o_d_t = os.path.join(
