@@ -199,7 +199,7 @@ async def youtube_dl_call_back(bot, update):
         #
         final_response = await upload_to_tg(
             update.message,
-            tmp_directory_for_each_user,
+            download_directory,
             user_id,
             {}
         )
