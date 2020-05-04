@@ -26,7 +26,8 @@ from tobrot import (
     TG_MAX_FILE_SIZE,
     EDIT_SLEEP_TIME_OUT,
     DOWNLOAD_LOCATION,
-    REMOVE_WORD
+    REMOVE_WORD,
+    C_NAME
 )
 
 
@@ -175,7 +176,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                 thumb = thumb_image_path
             if caption_str in local_file_name:
 
-                caption_str1 = '@GTMovise ' + caption_str
+                caption_str1 = C_NAME + ' ' + caption_str
                 caption_str2 = caption_str1
                 if "%20" in caption_str2:
                    caption_str2 = caption_str2.replace("%20"," ")
@@ -264,7 +265,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
             # send document
             if caption_str in local_file_name:
 
-                caption_str1 = '@GTMovise ' + caption_str
+                caption_str1 = C_NAME + ' ' + caption_str
                 caption_str2 = caption_str1
                 if "%20" in caption_str2:
                    caption_str2 = caption_str2.replace("%20"," ")
