@@ -66,7 +66,8 @@ async def incoming_message_f(client, message):
                "youtube-dl",
                "--no-warnings",
                "--console-title",
-               #"--min-sleep-interval=10",
+               "-c",
+               "--retries=10",
                #"--max-sleep-interval=20",
                "-o"+new_download_location+"%(title)s.%(ext)s",
                url
