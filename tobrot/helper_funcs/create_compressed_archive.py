@@ -15,6 +15,7 @@ import os
 import shutil
 import zipfile
 import time
+import tarfile
 
 async def create_archive(input_directory):
     return_name = None
@@ -77,11 +78,18 @@ async def create_unzip(input_directory):
             f"{input_directory}"
         ]
         """
-        target = input_directory
-        handle = zipfile.ZipFile(target)
+        if .tar in input_directory:
+           my_tar = tarfile.open(input_directory)
+
+           extract_file = my_tar.extractall(new_working_directory) 
+
+           my_tar.close() 
+        if .zip in input_directory:
+           target = input_directory
+           handle = zipfile.ZipFile(target)
         
-        extract_file = handle.extractall(new_working_directory)
-        handle.close
+           extract_file = handle.extractall(new_working_directory)
+           handle.close
         """
         process = await asyncio.create_subprocess_exec(
             *extract_file,
