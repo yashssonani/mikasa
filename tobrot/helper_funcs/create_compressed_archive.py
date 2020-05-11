@@ -78,13 +78,13 @@ async def create_unzip(input_directory):
             f"{input_directory}"
         ]
         """
-        if .tar in input_directory:
+        if ".tar" in input_directory:
            my_tar = tarfile.open(input_directory)
 
            extract_file = my_tar.extractall(new_working_directory) 
 
            my_tar.close() 
-        if .zip in input_directory:
+        if ".zip" in input_directory:
            target = input_directory
            handle = zipfile.ZipFile(target)
         
