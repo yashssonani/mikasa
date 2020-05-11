@@ -61,7 +61,8 @@ async def incoming_message_f(client, message):
         for rec in foe:
           url = rec
           LOGGER.info(url)
-          
+          if "?a=view" in url:
+             url = url.replace("?a=view","")
           command =[
                "youtube-dl",
                "--no-warnings",
