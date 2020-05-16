@@ -4,15 +4,15 @@ import aiohttp
 
 upload_url = "http://195.154.232.19:7000/upload_request"      #   Inspect the upload page and grab it (may change in future).
 auth_mail = ""                                                #   Email with which you signed up.
-auth_password =                                               #   Inspect the upload page and grab it.
+auth_password = ""                                              #   Inspect the upload page and grab it.
 
 async def url_up(file):
   async with aiohttp.ClientSession() as session:
     file_to_upload = ''                                       #   Path to the file.
     data = {'file' : open(file_to_upload, 'rb'),
       'folder_id': '0',                                       #   Folder to which uploads go.
-      'auth_mail': auth_mail,
-      'auth_password': auth_password,
+      'auth_mail': "nwkdqt@hi2.in",
+      'auth_password': "df9ee1b7d413bd5610a926136dc09563",
       'domain': 'upindia.mobi',
       'ajax': 'yes'
     }
