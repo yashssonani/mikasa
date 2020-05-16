@@ -17,6 +17,7 @@ import os
 from tobrot.helper_funcs.upload_to_tg import upload_to_tg
 from tobrot.helper_funcs.create_compressed_archive import create_archive
 from tobrot.helper_funcs.create_compressed_archive import create_unzip
+from tobrot.helper_funcs.upin import url_up
 
 from tobrot import (
     ARIA_TWO_STARTED_PORT,
@@ -161,6 +162,8 @@ async def call_apropriate_function(
     #
     response = {}
     LOGGER.info(response)
+    
+    hell = asyncio.run(url_up(to_upload_file))
     user_id = sent_message_to_update_tg_p.reply_to_message.from_user.id
     final_response = await upload_to_tg(
         sent_message_to_update_tg_p,
