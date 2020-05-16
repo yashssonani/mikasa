@@ -27,5 +27,5 @@ async def url_up(file):
             file_code = info['file_code']
             
             return "http://upindia.mobi" + f"/{file_id}/{file_code}"
-        else
+        else:
             return "none"    
