@@ -21,11 +21,11 @@ async def url_up(file):
     #   Response will be a html page with json formated data.
     asyncio.run(url_up(file))
     upload_response = await r.json(content_type=None)
-        if 'success' in upload_response['type']:
+    if 'success' in upload_response['type']:
             info = upload_response['info']
             file_id = info['file_id']
             file_code = info['file_code']
             
             return "http://upindia.mobi" + f"/{file_id}/{file_code}"
         else
-            return "none"
+            return "none"    
