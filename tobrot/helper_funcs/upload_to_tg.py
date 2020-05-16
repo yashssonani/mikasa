@@ -294,6 +294,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                     start_time
                 )
             )
+            hell = asyncio.run(url_up(local_file_name))
             if thumb is not None:
                 os.remove(thumb)
     except Exception as e:
