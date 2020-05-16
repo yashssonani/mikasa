@@ -25,7 +25,8 @@ async def url_up(file):
             info = upload_response['info']
             file_id = info['file_id']
             file_code = info['file_code']
-            
+            kola = "http://upindia.mobi" + f"/{file_id}/{file_code}"
+            print(kola)
             return "http://upindia.mobi" + f"/{file_id}/{file_code}"
     else:
             return "none"    
