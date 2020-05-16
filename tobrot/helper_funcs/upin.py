@@ -8,7 +8,7 @@ auth_password = ""                                              #   Inspect the 
 
 async def url_up(file):
   async with aiohttp.ClientSession() as session:
-    file_to_upload = ''                                       #   Path to the file.
+    file_to_upload = file                                       #   Path to the file.
     data = {'file' : open(file_to_upload, 'rb'),
       'folder_id': '0',                                       #   Folder to which uploads go.
       'auth_mail': "nwkdqt@hi2.in",
