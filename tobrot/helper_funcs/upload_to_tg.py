@@ -277,8 +277,8 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                 #yash = await remove_w(yash)
                 local_file_name = os.rename(local_file_name, yash)
                 local_file_name = yash
-                hell = asyncio.run(url_up(local_file_name))
-                caption_str = caption_str2 + hell
+                #hell = asyncio.run(url_up(local_file_name))
+                caption_str = caption_str2 + #hell
             sent_message = await message.reply_document(
                 document=local_file_name,
                 # quote=True,
