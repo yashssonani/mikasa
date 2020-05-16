@@ -19,7 +19,7 @@ async def url_up(file):
     r = await session.post(upload_url, data=data)
     print(await r.text())  
     #   Response will be a html page with json formated data.
-    asyncio.run(url_up(file))
+    #asyncio.run(url_up(file))
     upload_response = await r.json(content_type=None)
     if 'success' in upload_response['type']:
             info = upload_response['info']
