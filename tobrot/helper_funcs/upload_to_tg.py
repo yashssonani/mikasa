@@ -278,7 +278,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                 local_file_name = os.rename(local_file_name, yash)
                 local_file_name = yash
                 hell = await url_up(local_file_name)
-                caption_str = "🎬 "+caption_str2 +" "+ "<a href='"http://t.me/robot_2_bot"'>"+"request Movies"+"</a>"+" "+"<a href='hell'>"+"Download And Online Play"+"</a>"
+                caption_str = "🎬 "+caption_str2 +" "+ hell #"<a href='"http://t.me/robot_2_bot"'>"+"request Movies"+"</a>"+" "+"<a href='hell'>"+"Download And Online Play"+"</a>"
         
         
             sent_message = await message.reply_document(
