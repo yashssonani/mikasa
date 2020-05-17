@@ -26,8 +26,22 @@ async def url_up(file):
             file_id = info['file_id']
             file_code = info['file_code']
             kola = "http://upindia.mobi" + f"/{file_id}/{file_code}"
-            print(kola)
-            return "http://upindia.mobi" + f"/{file_id}/{file_code}"
+            #print(kola)
+            #return "http://upindia.mobi" + f"/{file_id}/{file_code}"
+    #else:
+            #return "none"
+    r = await session.post("https://api.shorte.st/s/d3c901a7e36354d8fc57ec1e6b4a3cab/"+kola)
+   # print(await r.text())  
+    #   Response will be a html page with json formated data.
+    #asyncio.run(url_up(file))
+    upload_response = await r.json(content_type=None)
+    if 'ok' in upload_response['status']:
+            shortenedUrl = upload_response['shortenedUrl']
+            #file_id = info['file_id']
+            #file_code = info['file_code']
+            #kola = "http://upindia.mobi" + f"/{file_id}/{file_code}"
+            #print(kola)
+            return shortenedUrl
     else:
-            return "none"    
+            return "none"        
     
