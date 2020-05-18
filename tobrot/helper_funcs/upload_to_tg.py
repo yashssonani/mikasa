@@ -23,6 +23,7 @@ from tobrot.helper_funcs.split_large_files import split_large_files
 from tobrot.helper_funcs.copy_similar_file import copy_file
 from tobrot.helper_funcs.remove_words import remove_w
 from tobrot.helper_funcs.upin import url_up
+from tobrot.helper_funcs.Convert import convert_video
 from tobrot import (
     TG_MAX_FILE_SIZE,
     EDIT_SLEEP_TIME_OUT,
@@ -279,8 +280,8 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                 local_file_name = yash
                 hell = await url_up(local_file_name)
                 caption_str = "🎬 "+caption_str2 +" "+ hell #"<a href='"http://t.me/robot_2_bot"'>"+"request Movies"+"</a>"+" "+"<a href='hell'>"+"Download And Online Play"+"</a>"
-        
-        
+                local_file_name45 = local_file_name + "35.mkv"
+                local_file_name = convert_video(local_file_name, local_file_name45)
             sent_message = await message.reply_document(
                 document=local_file_name,
                 # quote=True,
