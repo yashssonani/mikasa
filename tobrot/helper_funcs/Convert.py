@@ -2,7 +2,7 @@ import subprocess
 from subprocess import call   
 import asyncio
 #video_file = "input.mkv"
-out_put_file_name = "/storage/emulated/0/Videoder/output34.mkv34.mkv"
+#out_put_file_name = "/storage/emulated/0/Videoder/output34.mkv34.mkv"
 def convert_video(video_file, out_put_file_name):   
     command = [
         "ffmpeg",
@@ -24,6 +24,6 @@ def convert_video(video_file, out_put_file_name):
     process =call(command, shell=False)
     return out_put_file_name;
     
-a = convert_video("/storage/emulated/0/Telegram/input1.mp4", out_put_file_name)
-print(a)
+#a = convert_video("/storage/emulated/0/Telegram/input1.mp4", out_put_file_name)
+#print(a)
  
