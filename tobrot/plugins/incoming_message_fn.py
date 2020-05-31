@@ -94,10 +94,10 @@ async def incoming_message_f(client, message):
       if dl_url is not None:
           await i_m_sefg.edit_text("extracting links")
         # start the aria2c daemon
-        """
-          aria_i_p = await aria_start()
-          LOGGER.info(aria_i_p)
-        """
+          
+          #aria_i_p = await aria_start()
+          #LOGGER.info(aria_i_p)
+          
           current_user_id = message.from_user.id
         # create an unique directory
           new_download_location = os.path.join(
@@ -138,7 +138,7 @@ async def incoming_message_f(client, message):
            
             
         # try to download the "link"
-        """
+      """
           sagtus, err_message = await call_apropriate_function(
               aria_i_p,
               dl_url,
