@@ -87,10 +87,12 @@ async def incoming_message_f(client, message):
                   
               
     else:
+      sent_message_to_update_tg_p = i_m_sefg
       i_m_sefg = await message.reply_text("is not", quote=True)
       dl_url, cf_name = extract_link(message.reply_to_message)
       LOGGER.info(dl_url)
       LOGGER.info(cf_name)
+      
       if dl_url is not None:
           await i_m_sefg.edit_text("extracting links")
         # start the aria2c daemon
