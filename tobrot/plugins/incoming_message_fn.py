@@ -105,7 +105,7 @@ async def incoming_message_f(client, message):
             str(current_user_id),
             str(time.time())
           )
-          
+          new_download_location = new_download_location + "/"
         # create download directory, if not exist
           if not os.path.isdir(new_download_location):
               os.makedirs(new_download_location)
@@ -127,13 +127,13 @@ async def incoming_message_f(client, message):
             to_upload_file = new_download_location
             response = {}
             LOGGER.info(response)
-            user_id = sent_message_to_update_tg_p.reply_to_message.from_user.id
+            user_id = current_user_id #sent_message_to_update_tg_p.reply_to_message.from_user.id
             final_response = await upload_to_tg(sent_message_to_update_tg_p,to_upload_file,user_id,response)
           else:
             to_upload_file = new_download_location
             response = {}
             LOGGER.info(response)
-            user_id = sent_message_to_update_tg_p.reply_to_message.from_user.id
+            user_id = current_user_id #sent_message_to_update_tg_p.reply_to_message.from_user.id
             final_response = await upload_to_tg(sent_message_to_update_tg_p,to_upload_file,user_id,response)
            
             
