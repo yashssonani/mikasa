@@ -125,6 +125,9 @@ async def incoming_message_f(client, message):
           ]
           process = call(command, shell=False)
           if is_unzip:
+            a = os.listdir(new_download_location)
+            b = a[0]
+            new_download_location = new_download_location + b
             new_download_location = await create_unzip(new_download_location)
             to_upload_file = new_download_location
             response = {}
