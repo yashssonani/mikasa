@@ -31,7 +31,7 @@ async def url_up(file):
     #else:
             #return "none"
     #r = await session.post("https://api.shorte.st/s/d3c901a7e36354d8fc57ec1e6b4a3cab/"+kola)
-     r = await session.get("https://shrinkearn.com/api?api=7564baef25bedf110f660c06a05fc2f42491f563&url="+kola)
+    r = await session.get("https://shrinkearn.com/api?api=7564baef25bedf110f660c06a05fc2f42491f563&url="+kola)
    # print(await r.text())  
     #   Response will be a html page with json formated data.
     #asyncio.run(url_up(file))
