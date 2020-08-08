@@ -139,7 +139,8 @@ async def incoming_message_f(client, message):
             #convert_file(new_download_location,'same',300,False)
             new_download_location = new_download_location + b
             #convert_file(new_download_location,'same',300,False)
-            convert_link(url,'same',300,False)
+            conurl = convert_link(url,'same',300,False)
+            i_m_sefg1 = await message.reply_text(text=conurl, quote=True)
           if is_unzip:
             a = os.listdir(new_download_location)
             b = a[0]
