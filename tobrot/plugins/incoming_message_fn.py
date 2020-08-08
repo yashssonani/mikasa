@@ -29,18 +29,21 @@ from tobrot.helper_funcs.youtube_dl_extractor import extract_youtube_dl_formats
 from subprocess import call
 from tobrot.helper_funcs.upload_to_tg import upload_to_tg
 from tobrot.helper_funcs.create_compressed_archive import create_unzip
-
+from tobrot.helper_funcs.newc import convert_file
 
 async def incoming_message_f(client, message):
     """/leech command"""
     i_m_sefg = await message.reply_text("processing", quote=True)
     is_zip = False
     is_unzip = False
+    is_convert = False
     if len(message.command) > 1:
         if message.command[1] == "archive":
             is_zip = True
         elif message.command[1] == "unzip":
             is_unzip = True
+        elif message.command[1] == "convert":
+            is_convert = True
     # get link from the incoming message
     if not message.reply_to_message:
       i_m_sefg = await message.reply_text("No link or No File Found", quote=True)
@@ -76,6 +79,11 @@ async def incoming_message_f(client, message):
                url
           ]   
           process = call(command, shell=False)
+      if is_convert:
+        a = os.listdir(new_download_location)
+        b = a[0]convert_file(fil,'same',300,False)
+        new_download_location = new_download_location + b
+        convert_file(new_download_location,'same',300,False)
       to_upload_file = new_download_location
       response = {}
       LOGGER.info(response)
