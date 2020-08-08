@@ -81,7 +81,8 @@ async def incoming_message_f(client, message):
           process = call(command, shell=False)
       if is_convert:
         a = os.listdir(new_download_location)
-        b = a[0]convert_file(fil,'same',300,False)
+        b = a[0]
+        #convert_file(new_download_location,'same',300,False)
         new_download_location = new_download_location + b
         convert_file(new_download_location,'same',300,False)
       to_upload_file = new_download_location
