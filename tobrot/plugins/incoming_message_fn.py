@@ -29,7 +29,7 @@ from tobrot.helper_funcs.youtube_dl_extractor import extract_youtube_dl_formats
 from subprocess import call
 from tobrot.helper_funcs.upload_to_tg import upload_to_tg
 from tobrot.helper_funcs.create_compressed_archive import create_unzip
-from tobrot.helper_funcs.newc import convert_file
+from tobrot.helper_funcs.newc import convert_file, convert_link
 
 async def incoming_message_f(client, message):
     """/leech command"""
@@ -138,7 +138,8 @@ async def incoming_message_f(client, message):
             b = a[0]
             #convert_file(new_download_location,'same',300,False)
             new_download_location = new_download_location + b
-            convert_file(new_download_location,'same',300,False)
+            #convert_file(new_download_location,'same',300,False)
+            convert_link(url,'same',300,False)
           if is_unzip:
             a = os.listdir(new_download_location)
             b = a[0]
