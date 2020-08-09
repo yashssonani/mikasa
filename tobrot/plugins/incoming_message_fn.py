@@ -84,6 +84,7 @@ async def incoming_message_f(client, message):
         b = a[0]
         #convert_file(new_download_location,'same',300,False)
         new_download_location = new_download_location + b
+        new_download_location = os.path.abspath(new_download_location)
         convert_file(new_download_location,'same',300,False)
       to_upload_file = new_download_location
       response = {}
