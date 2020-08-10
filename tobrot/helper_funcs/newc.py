@@ -1,8 +1,8 @@
+#from selenium import webdriver
 from selenium import webdriver
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
+#from selenium.webdriver.support.ui import WebDriverWait
+#from selenium.webdriver.support import expected_conditions as EC
+#from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException, UnexpectedAlertPresentException
 from selenium.webdriver import ActionChains
@@ -100,7 +100,7 @@ def convert(driver,reso,size,audio):
 
     slider = driver.find_element_by_id('slider_button')
     driver.execute_script("arguments[0].setAttribute('style',arguments[1])", slider, 'left: '+str(slider_val) + 'px')
-    print(str(slider_val) + 'px')
+    #print(str(slider_val) + 'px')
     # set resolution
 
     # set resolution
@@ -121,13 +121,13 @@ def convert(driver,reso,size,audio):
 
 
     a = driver.find_element_by_xpath('//*[@id="download_file_link"]')
-    print('Converting', end='')
+    #print('Converting', end='')
     while a.get_attribute('href') == 'https://convert-video-online.com/#':
-        print('.',end='')
+        #print('.',end='')
         time.sleep(5)
 
     download_link = a.get_attribute("href")
-    print(download_link)
+    #print(download_link)
 
     driver.quit()
     return download_link
