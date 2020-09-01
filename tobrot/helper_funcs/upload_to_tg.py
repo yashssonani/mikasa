@@ -278,8 +278,8 @@ async def upload_single_file(message, local_file_name, caption_str, from_user):
                 #yash = await remove_w(yash)
                 local_file_name = os.rename(local_file_name, yash)
                 local_file_name = yash
-                hell = await url_up(local_file_name)
-                caption_str = "🎬 "+caption_str2 +"\n\n📥High Speed Download link :\n"+ hell #"<a href='"http://t.me/robot_2_bot"'>"+"request Movies"+"</a>"+" "+"<a href='hell'>"+"Download And Online Play"+"</a>"
+                #hell = await url_up(local_file_name)
+                caption_str = "🎬 "+caption_str2 +"\n\n📤Upload By:\n"+ C_NAME #"<a href='"http://t.me/robot_2_bot"'>"+"request Movies"+"</a>"+" "+"<a href='hell'>"+"Download And Online Play"+"</a>"
                 #local_file_name45 = local_file_name + "35.mkv"
                 #local_file_name = convert_video(local_file_name, local_file_name45)
             sent_message = await message.reply_document(
